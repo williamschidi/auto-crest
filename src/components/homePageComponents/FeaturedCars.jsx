@@ -14,12 +14,12 @@ function FeaturedCars() {
     : carDetails.slice(0, 8);
 
   return (
-    <div className="py-12 px-8 md:px-16 bg-neutral">
+    <section className="py-12 px-8 md:px-16 bg-white">
       <div className="flex justify-center mb-4">
         <div className="w-16 h-1 bg-accent rounded-full"></div>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold text-center py-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+      <h2 className="text-4xl md:text-5xl font-extrabold py-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
         Explore Our Collections
       </h2>
 
@@ -36,7 +36,7 @@ function FeaturedCars() {
           Show {showAll ? "less" : "all"} cars
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 

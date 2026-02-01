@@ -19,7 +19,7 @@ function HeroSection() {
     "About",
   ];
   return (
-    <div className="relative flex flex-col min-h-screen w-full overflow-x-hidden">
+    <section className="relative flex flex-col min-h-screen w-full overflow-x-hidden pb-8">
       <nav className="sticky top-0 left-0 z-50 flex justify-between items-center px-2 lg:px-4 py-2 bg-white shadow-md">
         <div className="w-[5rem] sm:w-[6rem]">
           <img
@@ -248,7 +248,7 @@ function HeroSection() {
           <SelectOptions />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

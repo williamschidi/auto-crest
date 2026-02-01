@@ -1,35 +1,14 @@
-// function CarCard({ data }) {
-//   return (
-//     <div className="w-full max-w-xs bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105  transition-all duration-300 cursor-pointer h-[22rem]">
-//       {/* Image */}
-//       <img
-//         src={data.image}
-//         alt={data.model}
-//         className="w-full h-48 object-cover"
-//       />
-
-//       {/* Content */}
-//       <div className="p-4">
-//         <h3 className="text-sm font-semibold text-gray-900 leading-snug line-clamp-2">
-//           {data.model}
-//         </h3>
-
-//         <p className="mt-2 text-xl font-bold text-gray-900">
-//           ${data.price}
-//         </p>
-//         <p className="text-sm text-gray-600">
-//           {data.millage} mi.
-//         </p>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default CarCard;
+import { motion } from "framer-motion";
 
 const CarCard = ({ data }) => {
   return (
-    <div className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+    >
       <div className="relative">
         <img
           src={data.image}
@@ -57,10 +36,8 @@ const CarCard = ({ data }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default CarCard;
-// Usage Example
-// <CarCard data={yourCarObject} />
