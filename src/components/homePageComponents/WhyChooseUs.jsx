@@ -71,11 +71,17 @@ function WhyChooseUs() {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 items-stretch max-w-5xl mx-auto">
+      <div className="relative grid md:grid-cols-2 items-stretch max-w-5xl mx-auto border border-primary rounded-2xl">
+        <div
+          className="absolute inset-0 z-10 filter blur-sm bg-center bg-cover"
+          style={{
+            backgroundImage: `url(./${whyChooseUsData[activeIndex].image})`,
+          }}
+        ></div>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
-            className=" rounded-l-xl h-full flex items-center justify-center "
+            className="rounded-t-xl md:rounded-tr-[0] md:rounded-l-xl  h-full flex items-center justify-center z-20"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -83,7 +89,7 @@ function WhyChooseUs() {
             <img
               src={whyChooseUsData[activeIndex].image}
               alt={whyChooseUsData[activeIndex].title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain rounded-t-xl md:rounded-tr-[0] md:rounded-l-xl "
             />
           </motion.div>
 
@@ -92,12 +98,12 @@ function WhyChooseUs() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-primary/90 w-full h-full px-10  text-neutral rounded-r-2xl shadow-md"
+            className="bg-primary/95 w-full h-full px-4 sm:px-8 py-6 text-neutral rounded-b-2xl md:rounded-bl-[0] md:rounded-r-2xl shadow-md z-20"
           >
-            <h3 className="text-3xl font-bold mb-5 text-white pt-20">
+            <h3 className="text-3xl font-bold mb-5 text-white">
               {whyChooseUsData[activeIndex].title}
             </h3>
-            <p className="text-neutral leading-8 max-w-xl tracking-wider">
+            <p className="text-neutral leading-8 max-w-xl tracking-wider pb-20 md:pb-0">
               {whyChooseUsData[activeIndex].description}
             </p>
           </motion.div>

@@ -23,7 +23,7 @@ function CallToAction() {
         <div className="absolute inset-0 bg-black/55"></div>
 
         {/* Content */}
-        <div className="relative px-8 py-20 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="relative px-4 sm:px-8 py-20 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Text */}
           <div className="text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
@@ -36,17 +36,17 @@ function CallToAction() {
           </div>
 
           {/* Actions */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <Link
               to="/cars"
-              className="bg-white text-primary font-semibold px-7 py-3 rounded-full transition transform hover:scale-[1.03] hover:shadow-lg active:scale-[0.97]"
+              className="bg-white text-primary font-semibold px-4 sm:px-7 py-2 sm:py-3 rounded-full transition transform hover:scale-[1.03] hover:shadow-lg active:scale-[0.97]"
             >
               Browse Cars
             </Link>
 
             <a
               href="https://wa.me/234XXXXXXXXX"
-              className="border border-white text-white font-semibold px-7 py-3 rounded-full transition transform hover:scale-[1.03] hover:bg-white hover:text-primary active:scale-[0.97]"
+              className="border border-white text-white font-semibold px-4 sm:px-7 py-2 sm:py-3 rounded-full transition transform hover:scale-[1.03] hover:bg-white hover:text-primary active:scale-[0.97]"
             >
               WhatsApp Us
             </a>

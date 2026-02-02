@@ -10,6 +10,10 @@ export default {
         accent: "#F59E0B",
         // accent: "#047857",
       },
+      screens: {
+        xs: "490px",
+        mlg: "920px",
+      },
     },
   },
   plugins: [],

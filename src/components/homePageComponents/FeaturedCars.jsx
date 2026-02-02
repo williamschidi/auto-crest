@@ -2,7 +2,7 @@ import { useState } from "react";
 import CarCard from "./carCard";
 import carDetails from "./FeatureCarData";
 
-function FeaturedCars() {
+function FeaturedCars({ carRef }) {
   const [showAll, setShowAll] = useState(false);
 
   function showAllCars() {
@@ -14,7 +14,10 @@ function FeaturedCars() {
     : carDetails.slice(0, 8);
 
   return (
-    <section className="py-12 px-8 md:px-16 bg-white">
+    <section
+      ref={carRef}
+      className="py-12 px-8 md:px-16 bg-white"
+    >
       <div className="flex justify-center mb-4">
         <div className="w-16 h-1 bg-accent rounded-full"></div>
       </div>
