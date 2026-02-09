@@ -1,4 +1,7 @@
+import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+
+import { Link } from "react-router-dom";
 
 const CarCard = ({ data }) => {
   return (
@@ -11,7 +14,7 @@ const CarCard = ({ data }) => {
     >
       <div className="relative">
         <img
-          src={data.image}
+          src={data.images[0]}
           alt={data.model}
           className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
         />
@@ -30,10 +33,19 @@ const CarCard = ({ data }) => {
           Mileage: {data.millage} MPG
         </p>
 
-        <div className="mt-auto">
-          <button className="mt-4 w-full py-2 rounded-lg font-semibold text-neutral bg-primary">
-            View Details
-          </button>
+        <div className="mt-auto ">
+          <Link
+            to={`cars/${data.id}`}
+            className="mt-4 w-full py-2 rounded-lg font-semibold text-neutral hover:text-neutral/90 bg-primary hover:bg-primary/90 inline-flex gap-4 justify-center items-center group "
+          >
+            <span>View Details</span>{" "}
+            <Icon
+              icon="gg:arrow-right-o"
+              width="20"
+              height="20"
+              className="group-hover:translate-x-2 transition-transform duration-300 ease-out"
+            />
+          </Link>
         </div>
       </div>
     </motion.div>

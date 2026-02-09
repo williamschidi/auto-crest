@@ -42,7 +42,7 @@ function WhyChooseUs() {
       </h2>
 
       {/* Tabs */}
-      <div className="relative flex justify-center gap-10 border-b border-gray-400 mb-14 overflow-x-auto max-w-2xl mx-auto">
+      <div className="relative flex justify-start sm:justify-center gap-5 sm:gap-10 px-4 sm:px-0 border-b border-gray-400 mb-14 overflow-x-auto max-w-2xl mx-auto no-scrollbar">
         {whyChooseUsData.map((item, index) => (
           <button
             key={item.id}
@@ -78,7 +78,7 @@ function WhyChooseUs() {
             backgroundImage: `url(./${whyChooseUsData[activeIndex].image})`,
           }}
         ></div>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={activeIndex}
             className="rounded-t-xl md:rounded-tr-[0] md:rounded-l-xl  h-full flex items-center justify-center z-20"
@@ -97,7 +97,7 @@ function WhyChooseUs() {
             key={"text-" + activeIndex}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="bg-primary/95 w-full h-full px-4 sm:px-8 py-6 text-neutral rounded-b-2xl md:rounded-bl-[0] md:rounded-r-2xl shadow-md z-20"
           >
             <h3 className="text-3xl font-bold mb-5 text-white">

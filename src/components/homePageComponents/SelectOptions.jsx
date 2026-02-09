@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import carData from "./carData";
+// import carData from "./carData";
 import Option from "./Option";
 import carDetails from "./FeatureCarData";
 import { useState } from "react";
@@ -12,65 +12,99 @@ const priceRange = [
   { label: "$12000 - Above", min: 12000 },
 ];
 
-function SelectOptions() {
-  const [vehicle, setVehicle] = useState({
-    brand: "",
-    model: "",
-    mileage: "",
-    price: null,
-  });
+const initialState = {
+  brand: "",
+  model: "",
+  mileage: "",
+  price: null,
+};
+
+function SelectOptions({ handleScroll, setSearchedCars }) {
+  const [vehicle, setVehicle] = useState(initialState);
 
   function handleOnChange(name, value) {
     setVehicle((prev) => ({
       ...prev,
       [name]: value,
-
       ...(name === "brand" && { model: "" }),
     }));
   }
 
+  function handleSearch() {
+    if (
+      !vehicle.brand &&
+      !vehicle.model &&
+      !vehicle.mileage &&
+      !vehicle.price
+    ) {
+      return;
+    }
+    const filteredCar = carDetails.filter((carDetail) => {
+      if (
+        vehicle.brand &&
+        carDetail.brand !== vehicle.brand
+      ) {
+        return false;
+      }
+      if (
+        vehicle.model &&
+        carDetail.model !== vehicle.model
+      ) {
+        return false;
+      }
+      if (
+        vehicle.mileage &&
+        carDetail.mileage !== vehicle.mileage
+      ) {
+        return false;
+      }
+      if (vehicle.price) {
+        const { min, max } = vehicle.price;
+        console.log("min :", min, "max:", max);
+        if (min && carDetail.price < min) return false;
+        if (max && carDetail.price > max) return false;
+      }
+      return true;
+    });
+    setSearchedCars(filteredCar);
+    console.log(filteredCar);
+    handleScroll();
+    setVehicle(initialState);
+  }
+
+  // select only brands from the array of carDetails
   const brands = [
-    ...new Set(carDetails.map((make) => make.name)),
+    ...new Set(carDetails.map((make) => make.brand)),
   ];
 
   let models;
   let mileage;
 
+  // get model under selected brands
   if (vehicle.brand) {
     const carBrand = carDetails.filter(
-      (carDetail) => carDetail.name === vehicle.brand,
+      (carDetail) => carDetail.brand === vehicle.brand,
     );
 
     models = carBrand.map((car) => car.model);
-
-    if (vehicle.model) {
-      const carModel = carDetails.filter(
-        (carDetail) => carDetail.model === vehicle.model,
-      );
-
-      mileage = carModel.map((car) => car.mileage);
-    }
   }
 
   return (
     <>
       <Option
         options={brands}
-        label={"Brand"}
         onchange={handleOnChange}
         name="brand"
         value={vehicle.brand}
       />
       <Option
         options={models}
-        label={"Model"}
         onchange={handleOnChange}
         name="model"
         value={vehicle.model}
       />
       <Option
         options={mileage}
-        label={"Mileage"}
         onchange={handleOnChange}
         name="mileage"
         value={vehicle.mileage}
@@ -78,12 +112,14 @@ function SelectOptions() {
 
       <Option
         options={priceRange}
-        label={"Price range"}
         name="price"
         onchange={handleOnChange}
         value={vehicle.price}
       />
-      <button className="flex space-x-2 items-center bg-primary px-3 py-2 text-white rounded-md hover:bg-green-700 transition-colors">
+      <button
+        onClick={handleSearch}
+        className="flex space-x-2 items-center bg-primary px-3 py-2 text-white rounded-md hover:bg-green-700 transition-colors"
+      >
         <span className="text-[.6rem] font-semibold">
           SEARCH
         </span>

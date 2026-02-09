@@ -1,28 +1,44 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import CarCard from "./carCard";
 import carDetails from "./FeatureCarData";
 
-function FeaturedCars({ carRef }) {
+function FeaturedCars({
+  carRef,
+  searchedCars,
+  setSearchCars,
+  id,
+}) {
   const [showAll, setShowAll] = useState(false);
+  const collectionRef = useRef();
 
   function showAllCars() {
     setShowAll((prev) => !prev);
+    setSearchCars(null);
+    collectionRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 
-  const visibleCars = showAll
+  const inStockedCars = showAll
     ? carDetails
     : carDetails.slice(0, 8);
+
+  const visibleCars = searchedCars || inStockedCars;
 
   return (
     <section
       ref={carRef}
       className="py-12 px-8 md:px-16 bg-white"
+      id={id}
     >
       <div className="flex justify-center mb-4">
         <div className="w-16 h-1 bg-accent rounded-full"></div>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold py-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+      <h2
+        ref={collectionRef}
+        className="text-4xl md:text-5xl font-extrabold py-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+      >
         Explore Our Collections
       </h2>
 

@@ -1,30 +1,48 @@
 import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-// import carData from "./carData";
+import { useContext, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { SavedCarsContext } from "../components/CarDetailsComponents/SavedCarsContext";
 
 const navItems = [
-  "Home",
-  "Browse Cars",
-  "Sell Your Car",
-  "Finance",
-  "Contact Us",
-  "About",
+  { label: "Home", path: "/" },
+  { label: "Browse Cars", path: "/browse" },
+  { label: "Sell Your Car", path: "/sellCar" },
+  { label: "Finance", path: "/finance" },
+  { label: "Contact Us", path: "/contact" },
+  { label: "About", path: "/about" },
 ];
 
 function NavBar() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  const { savedCars } = useContext(SavedCarsContext);
+
+  function handleHomeClick() {
+    if (location.pathname === "/") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }
+
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full flex justify-between items-center px-2 lg:px-4 py-2 bg-white shadow-md">
-      <div className="w-[5rem] sm:w-[6rem]">
+    <nav className="fixed top-0 left-0 z-50 w-full flex justify-between items-center px-2 lg:px-4 py-1 bg-white shadow-md">
+      <NavLink
+        to="/"
+        className="w-[5rem] sm:w-[6rem]"
+        onClick={handleHomeClick}
+      >
         <img
-          src="./images/autoCrest-1.webp"
+          src="/images/autoCrest-1.webp"
           alt="Logo"
           className="w-full"
         />
-      </div>
+      </NavLink>
 
       <AnimatePresence>
         {!searchOpen && (
@@ -36,11 +54,20 @@ function NavBar() {
           >
             {navItems.map((item, ind) => (
               <li
-                key={item}
+                key={ind}
                 onClick={() => setActiveIndex(ind)}
                 className={`relative pb-1 cursor-pointer hover:text-primary ${activeIndex === ind ? "font-semibold text-primary" : "font-normal"} transition-all`}
               >
-                {item}
+                <NavLink
+                  to={item.path}
+                  onClick={
+                    item.path === "/"
+                      ? handleHomeClick
+                      : undefined
+                  }
+                >
+                  {item.label}
+                </NavLink>
                 <motion.div
                   className="absolute left-0 bottom-0 h-0.5 origin-left bg-primary w-full"
                   initial={{ scaleX: 0 }}
@@ -89,7 +116,10 @@ function NavBar() {
           )}
         </div>
 
-        <button className="flex space-x-0 sm:space-x-2 items-center font-semibold">
+        <NavLink
+          to="/saved-cars"
+          className="flex space-x-0 sm:space-x-1 items-center "
+        >
           <Icon
             icon="mynaui:save"
             width="20"
@@ -99,18 +129,21 @@ function NavBar() {
           <span className="hidden lg:inline-block text-xs sm:text-sm">
             Save
           </span>
-        </button>
+          <span className="text-xs font-semibold">
+            ({savedCars?.length})
+          </span>
+        </NavLink>
         <div className="relative group hidden md:inline-block">
           {/* Trigger Button */}
           <button className="flex items-center space-x-2 px-2 lg:px-4 py-1 lg:py-2 text-secondary border border-primary hover:bg-primary transition-all rounded-md">
             <span>
               <Icon
                 icon="ph:user-duotone"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
               />
             </span>
-            <span>Account</span>
+            <span className="text-sm">Account</span>
             {/* Optional caret icon */}
             <svg
               className="w-4 h-4"

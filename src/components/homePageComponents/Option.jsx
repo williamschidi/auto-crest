@@ -2,7 +2,7 @@ import { Listbox } from "@headlessui/react";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 
-function Option({ options, label, name, value, onchange }) {
+function Option({ options, name, value, onchange }) {
   return (
     <Listbox
       value={value}
@@ -11,7 +11,7 @@ function Option({ options, label, name, value, onchange }) {
     >
       <div className="relative ">
         <Listbox.Button className="flex justify-between items-center w-full  px-3 py-2 rounded-md text-sm font-semibold text-left">
-          {value?.label || label}
+          {value?.label || value || name}
           <Icon
             icon="ri:arrow-drop-down-line"
             width="20"
@@ -32,7 +32,7 @@ function Option({ options, label, name, value, onchange }) {
                 }`
               }
             >
-              {brand.label || brand}
+              {brand.label || brand || name}
             </Listbox.Option>
           ))}
         </Listbox.Options>

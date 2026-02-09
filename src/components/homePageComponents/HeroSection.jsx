@@ -1,13 +1,15 @@
 import { Icon } from "@iconify/react";
-
 import SelectOptions from "./SelectOptions";
-import NavBar from "../../globalComponents/navBar";
 
-function HeroSection({ carRef }) {
+function HeroSection({ carRef, setSearchedCars }) {
+  function handleScroll() {
+    carRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
-    <section className="relative flex flex-col min-h-screen w-full overflow-x-hidden pb-8">
-      <NavBar />
-      <div className="relative min-h-[85vh] sm:min-h-screen bg-[url('./images/autocrestMobile-1.webp')] sm:bg-[url('./images/autoCrestBg.jpeg')] bg-cover bg-no-repeat bg-[position:50%_75%] sm:bg-center px-4 py-8">
+    <section className="relative flex flex-col min-h-[calc(100vh-64px)] w-full overflow-x-hidden pb-8">
+      {/* <NavBar /> */}
+      <div className="relative min-h-[85vh] sm:min-h-[cal(100vh-64px)] bg-[url('/images/autocrestMobile-1.webp')] sm:bg-[url('/images/autoCrestBg.jpeg')] bg-cover bg-no-repeat bg-[position:50%_75%] xs:bg-[position:50%_60%] sm:bg-center px-4 py-8">
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent sm:from-black/40"></div>
 
         <div className=" absolute bottom-28 sm:top-1/4 left-1/2 sm:left-8 lg:left-16 -translate-x-1/2 sm:translate-x-0 text-center sm:text-left max-w-[90%] sm:max-w-xl">
@@ -19,11 +21,7 @@ function HeroSection({ carRef }) {
             Lets help you get your <br /> next car !
           </p>
           <button
-            onClick={() => {
-              carRef.current.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
+            onClick={handleScroll}
             id="explore"
             className="mt-6 w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/80 px-8 py-3 rounded-lg text-sm font-semibold transition-all"
           >
@@ -50,7 +48,10 @@ function HeroSection({ carRef }) {
           />
         </svg>
         <div className="hidden absolute bottom-5 lg:bottom-2 left-[50%] translate-x-[-50%] w-full max-w-[45rem] lg:max-w-4xl shadow-lg mx-auto md:flex flex-wrap gap-6 lg:gap-10  justify-between items-center px-4 lg:px-8 py-4 bg-white rounded-2xl">
-          <SelectOptions />
+          <SelectOptions
+            setSearchedCars={setSearchedCars}
+            handleScroll={handleScroll}
+          />
         </div>
       </div>
     </section>
