@@ -69,6 +69,7 @@ function SelectOptions({ handleScroll }) {
       }
       return true;
     });
+
     setSearchCars(filteredCar);
 
     handleScroll();

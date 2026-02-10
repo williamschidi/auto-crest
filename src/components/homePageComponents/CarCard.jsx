@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 function CarCard({ data }) {
-  console.log(data.images[0]);
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}

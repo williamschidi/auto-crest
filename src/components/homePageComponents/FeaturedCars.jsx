@@ -15,7 +15,6 @@ function FeaturedCars({ carRef, id }) {
     collectionRef.current.scrollIntoView({
       behavior: "smooth",
     });
-    setSearchCars("");
   }
 
   const inStockedCars = showAll
@@ -23,11 +22,13 @@ function FeaturedCars({ carRef, id }) {
     : carDetails.slice(0, 8);
 
   const visibleCars = searchCars
-    ? carDetails.filter((car) =>
-        `${car.brand}`
-          .toLowerCase()
-          .includes(searchCars.toLowerCase()),
-      )
+    ? Array.isArray(searchCars)
+      ? searchCars
+      : carDetails.filter((car) =>
+          `${car.brand}`
+            .toLowerCase()
+            .includes(searchCars.toLowerCase()),
+        )
     : inStockedCars;
 
   return (

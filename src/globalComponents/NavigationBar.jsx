@@ -36,6 +36,10 @@ function NavigationBar() {
   function handleSearch(e) {
     if (e.key === "Enter" && searchValue.trim()) {
       setSearchCars(searchValue.trim());
+      setSearchOpen(false);
+      setSearchValue("");
+      const features = document.querySelector("#features");
+      features.scrollIntoView({ behavior: "smooth" });
     }
   }
 
