@@ -3,6 +3,8 @@ import { Icon } from "@iconify/react";
 import Option from "./Option";
 import carDetails from "./FeatureCarData";
 import { useState } from "react";
+import { useContext } from "react";
+import { SearchCars } from "../../globalComponents/SearchCarsContext";
 
 const priceRange = [
   { label: "$1000 - $2000", min: 1000, max: 2000 },
@@ -19,8 +21,9 @@ const initialState = {
   price: null,
 };
 
-function SelectOptions({ handleScroll, setSearchedCars }) {
+function SelectOptions({ handleScroll }) {
   const [vehicle, setVehicle] = useState(initialState);
+  const { setSearchCars } = useContext(SearchCars);
 
   function handleOnChange(name, value) {
     setVehicle((prev) => ({
@@ -66,8 +69,8 @@ function SelectOptions({ handleScroll, setSearchedCars }) {
       }
       return true;
     });
-    setSearchedCars(filteredCar);
-    console.log(filteredCar);
+    setSearchCars(filteredCar);
+
     handleScroll();
     setVehicle(initialState);
   }

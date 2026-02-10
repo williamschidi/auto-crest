@@ -1,14 +1,12 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import CarCard from "./carCard";
 import carDetails from "./FeatureCarData";
+import { SearchCars } from "../../globalComponents/SearchCarsContext";
 
-function FeaturedCars({
-  carRef,
-  searchedCars,
-  setSearchCars,
-  id,
-}) {
+function FeaturedCars({ carRef, id }) {
   const [showAll, setShowAll] = useState(false);
+  const { searchCars, setSearchCars } =
+    useContext(SearchCars);
   const collectionRef = useRef();
 
   function showAllCars() {
@@ -17,13 +15,20 @@ function FeaturedCars({
     collectionRef.current.scrollIntoView({
       behavior: "smooth",
     });
+    setSearchCars("");
   }
 
   const inStockedCars = showAll
     ? carDetails
     : carDetails.slice(0, 8);
 
-  const visibleCars = searchedCars || inStockedCars;
+  const visibleCars = searchCars
+    ? carDetails.filter((car) =>
+        `${car.brand}`
+          .toLowerCase()
+          .includes(searchCars.toLowerCase()),
+      )
+    : inStockedCars;
 
   return (
     <section

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { SavedCarsContext } from "../components/CarDetailsComponents/SavedCarsContext";
+import { SearchCars } from "./SearchCarsContext";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -15,8 +16,10 @@ const navItems = [
 
 function NavBar() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { setSearchCars } = useContext(SearchCars);
   const location = useLocation();
 
   const { savedCars } = useContext(SavedCarsContext);
@@ -27,6 +30,12 @@ function NavBar() {
         top: 0,
         behavior: "smooth",
       });
+    }
+  }
+
+  function handleSearch(e) {
+    if (e.key === "Enter" && searchValue.trim()) {
+      setSearchCars(searchValue.trim());
     }
   }
 
@@ -87,6 +96,9 @@ function NavBar() {
             type="text"
             placeholder="Search cars"
             className="absolute right-full px-2 sm:px-3 py-1 mr-1 sm:mr-2 border rounded-lg origin-right text-sm sm:text-base bg-white transition-transform max-w-[320px] w-56 focus:outline-none font-semibold"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={handleSearch}
             initial={{ width: 0, opacity: 0 }}
             animate={{
               width: searchOpen ? 256 : 0,

@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import SelectOptions from "./SelectOptions";
 
-function HeroSection({ carRef, setSearchedCars }) {
+function HeroSection({ carRef }) {
   function handleScroll() {
     carRef.current.scrollIntoView({ behavior: "smooth" });
   }
@@ -48,10 +48,7 @@ function HeroSection({ carRef, setSearchedCars }) {
           />
         </svg>
         <div className="hidden absolute bottom-5 lg:bottom-2 left-[50%] translate-x-[-50%] w-full max-w-[45rem] lg:max-w-4xl shadow-lg mx-auto md:flex flex-wrap gap-6 lg:gap-10  justify-between items-center px-4 lg:px-8 py-4 bg-white rounded-2xl">
-          <SelectOptions
-            setSearchedCars={setSearchedCars}
-            handleScroll={handleScroll}
-          />
+          <SelectOptions handleScroll={handleScroll} />
         </div>
       </div>
     </section>

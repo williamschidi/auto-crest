@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import CallToAction from "../components/homePageComponents/CallToAction";
 import FeaturedCars from "../components/homePageComponents/FeaturedCars";
 import HeroSection from "../components/homePageComponents/HeroSection";
@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 
 function Home() {
   const featureCarRef = useRef(null);
-  const [searchedCars, setSearchedCars] = useState(null);
+
   const { hash } = useLocation();
 
   useEffect(() => {
@@ -23,16 +23,11 @@ function Home() {
 
   return (
     <>
-      <HeroSection
-        carRef={featureCarRef}
-        setSearchedCars={setSearchedCars}
-      />
+      <HeroSection carRef={featureCarRef} />
       <WhyChooseUs />
       <FeaturedCars
         id={"features"}
         carRef={featureCarRef}
-        searchedCars={searchedCars}
-        setSearchCars={setSearchedCars}
       />
       <CallToAction />
       <Footer />
