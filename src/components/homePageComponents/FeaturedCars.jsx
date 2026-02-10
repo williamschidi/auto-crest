@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import CarCard from "./carCard";
+import CarCard from "./CarCard";
 import carDetails from "./FeatureCarData";
 import { SearchCars } from "../../globalComponents/SearchCarsContext";
 
