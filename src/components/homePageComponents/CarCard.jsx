@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 
-const CarCard = ({ data }) => {
+function CarCard({ data }) {
+  console.log(data.images[0]);
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -14,7 +15,7 @@ const CarCard = ({ data }) => {
     >
       <div className="relative">
         <img
-          src={data.images[0]}
+          src={data.images[0].replace(/^public\//, "/")}
           alt={data.model}
           className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
         />
@@ -50,6 +51,6 @@ const CarCard = ({ data }) => {
       </div>
     </motion.div>
   );
-};
+}
 
 export default CarCard;
