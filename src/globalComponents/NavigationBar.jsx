@@ -14,7 +14,7 @@ const navItems = [
   { label: "About", path: "/about" },
 ];
 
-function NavBar() {
+function NavigationBar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(null);
@@ -256,4 +256,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavigationBar;
