@@ -250,6 +250,23 @@ function NavigationBar() {
                   {item.label}
                 </motion.li>
               ))}
+              <motion.li
+                onClick={() => setMobileOpen(false)}
+                className="cursor-pointer px-2 py-2 rounded-md hover:bg-primary hover:text-white flex justify-between items-center"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+              >
+                <NavLink
+                  to="/saved-cars"
+                  className="w-full block"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Saved
+                </NavLink>
+                <span className="text-xs font-semibold">
+                  ({savedCars?.length})
+                </span>
+              </motion.li>
             </ul>
 
             {/* Account Section */}

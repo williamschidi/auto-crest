@@ -11,7 +11,10 @@ function Details({ car }) {
 
   return (
     <>
-      <div className="flex justify-between items-center  text-base   border-b border-gray-400">
+      <div
+        className="flex justify-between items-center gap-2 sm:gap-0 text-base border-b 
+      border-gray-400"
+      >
         <button
           onClick={() => setCurrentTab("features & specs")}
           className={`relative pb-4  ${currentTab === "features & specs" ? "text-primary font-bold" : "text-gray-400 font-semibold"}`}

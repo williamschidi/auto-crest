@@ -73,11 +73,11 @@ function CarDetails() {
         <WishList id={carId} />
       </div>
 
-      <div className="flex justify-between items-start gap-8 pt-6 w-full">
-        <div className="flex-[2] w-[45%]">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-8 pt-6 w-full">
+        <div className="flex-[2] w-full md:w-1/2">
           <CarImageSlider car={car} />
         </div>
-        <div className="flex-[3] px-8 ">
+        <div className="flex-[3] px-0 md:px-8 ">
           <Details car={car} />
         </div>
       </div>
