@@ -67,7 +67,10 @@ function SavedCars() {
             {/* Image */}
             <div className="relative h-50 overflow-hidden">
               <img
-                src={car.images[0]}
+                src={car.images[0].replace(
+                  /^public\//,
+                  "/",
+                )}
                 alt="Toyota Camry"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />

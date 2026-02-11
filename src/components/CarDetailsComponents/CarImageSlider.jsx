@@ -39,7 +39,7 @@ function CarImageSlider({ car }) {
         {images.map((img, ind) => (
           <SwiperSlide key={img} className="w-full">
             <img
-              src={`/${img}`}
+              src={`${img.replace(/^public\//, "/")}`}
               alt={`${car.brand} ${car.model}`}
               className="w-full h-full object-cover"
             />
