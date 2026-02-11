@@ -7,10 +7,10 @@ function DealerInfo() {
       initial={{ x: 40, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[450px]"
+      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[500px]"
     >
       {/* Title */}
-      <h2 className="text-3xl font-bold mb-6 ">
+      <h2 className="text-xl font-bold mb-6 ">
         Dealer Info
       </h2>
 

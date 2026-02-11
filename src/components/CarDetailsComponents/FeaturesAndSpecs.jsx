@@ -46,10 +46,15 @@ function FeaturesAndSpecs({ car }) {
   ];
 
   return (
-    <section>
-      <h1 className="text-3xl font-semibold pt-8">
+    <motion.section
+      initial={{ x: 40, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[500px]"
+    >
+      <h2 className="text-xl font-bold pt-4">
         Features & Specs
-      </h1>
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12 py-4">
         {hightlights.map((item, ind) => (
@@ -87,7 +92,7 @@ function FeaturesAndSpecs({ car }) {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 

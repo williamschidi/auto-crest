@@ -7,7 +7,7 @@ function PaymentOption() {
       initial={{ x: 40, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[450px]"
+      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[500px]"
     >
       {/* Header */}
       <h3 className="text-lg font-bold mb-1">
