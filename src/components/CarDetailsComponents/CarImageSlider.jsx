@@ -56,30 +56,33 @@ function CarImageSlider({ car }) {
           </SwiperSlide>
         ))}
       </Swiper>
+      {images.length > 1 && (
+        <>
+          <button
+            ref={nextRef}
+            className={`absolute top-1/2 right-2 -translate-y-1/2 w-8 h-8 rounded-full flex justify-center ${isLastIndex ? "bg-transparent" : "bg-gray-200"} items-center z-10 `}
+          >
+            <Icon
+              icon="eva:arrow-right-fill"
+              width="24"
+              height="24"
+              className={`${isLastIndex ? "text-transparent" : "text-gray-800"}`}
+            />
+          </button>
 
-      <button
-        ref={nextRef}
-        className={`absolute top-1/2 right-2 -translate-y-1/2 w-8 h-8 rounded-full flex justify-center ${isLastIndex ? "bg-transparent" : "bg-gray-200"} items-center z-10 `}
-      >
-        <Icon
-          icon="eva:arrow-right-fill"
-          width="24"
-          height="24"
-          className={`${isLastIndex ? "text-transparent" : "text-gray-800"}`}
-        />
-      </button>
-
-      <button
-        ref={prevRef}
-        className={`absolute top-1/2 left-2 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center z-10 -translate-y-1/2 ${isFirstIndex ? "bg-transparent" : "bg-gray-200"}`}
-      >
-        <Icon
-          icon="eva:arrow-left-fill"
-          width="24"
-          height="24"
-          className={`${isFirstIndex ? "text-transparent" : "text-gray-800"}`}
-        />
-      </button>
+          <button
+            ref={prevRef}
+            className={`absolute top-1/2 left-2 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center z-10 -translate-y-1/2 ${isFirstIndex ? "bg-transparent" : "bg-gray-200"}`}
+          >
+            <Icon
+              icon="eva:arrow-left-fill"
+              width="24"
+              height="24"
+              className={`${isFirstIndex ? "text-transparent" : "text-gray-800"}`}
+            />
+          </button>
+        </>
+      )}
     </div>
   );
 }
