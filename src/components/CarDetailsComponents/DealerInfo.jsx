@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 function DealerInfo() {
   return (
     <motion.section
-      className="mt-12 max-w-xl"
       initial={{ x: 40, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.4 }}
+      className="bg-white p-6 rounded-lg shadow-md w-full md:w-[400px] lg:w-[450px]"
     >
       {/* Title */}
       <h2 className="text-3xl font-bold mb-6 ">
@@ -32,11 +32,12 @@ function DealerInfo() {
       </div>
 
       {/* Button */}
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         <button
           className="
           group
-          w-1/2
+          w-full
+          md:w-1/2
           bg-primary
           hover:bg-primary/90
           hover:scale-[1.01]
@@ -64,14 +65,15 @@ function DealerInfo() {
               icon="mdi:arrow-right"
               width="16"
               height="16"
-              className="text-neutral"
+              className="text-neutral w-[14px] h-[14px] md:w-[16px] md:h-[16px]"
             />
           </span>
         </button>
         <button
           className="
           group
-          w-1/2
+          w-full
+          md:w-1/2
           border border-primary
           hover:bg-primary/5
           hover:scale-[1.01]
@@ -91,7 +93,7 @@ function DealerInfo() {
             icon="solar:phone-outline"
             width="24"
             height="24"
-            className="text-primary"
+            className="text-primary w-[18px] h-[18px] md:w-[24px] md:h-[24px]"
           />
           <span className=" text-primary ">
             Contact Dealer

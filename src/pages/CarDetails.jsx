@@ -56,7 +56,7 @@ function CarDetails() {
           Vehicle Details
         </NavLink>
       </div>
-      <div className="flex justify-between items-center pr-12">
+      <div className="flex justify-between items-center pr-0 sm:pr-12">
         <button
           className="flex justify-start items-center text-primary gap-4 text-sm"
           onClick={handleNavigation}

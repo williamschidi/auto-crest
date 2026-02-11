@@ -48,7 +48,7 @@ function WishList({ id }) {
       aria-label="Add to wishlist"
       className={`
         group flex items-center justify-center
-        w-10 h-10 rounded-full
+        w-7 h-7 sm:w-10 sm:h-10 rounded-full
         border transition-all duration-300
         ${
           saved
@@ -67,7 +67,7 @@ function WishList({ id }) {
         width="20"
         height="20"
         className={`
-          transition-all duration-300
+          transition-all duration-300 w-[16px] h-[16px] sm:w-[20px] sm:h-[20px]
           ${
             saved
               ? "text-red-600 scale-110"

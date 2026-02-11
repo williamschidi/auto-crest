@@ -37,11 +37,17 @@ function CarImageSlider({ car }) {
         className="h-full w-full"
       >
         {images.map((img, ind) => (
-          <SwiperSlide key={img} className="w-full">
+          <SwiperSlide
+            key={img}
+            className="w-full bg-center bg-no-repeat bg-cover flex justify-center items-center"
+            style={{
+              backgroundImage: `url(${img.replace(/^public\//, "/")})`,
+            }}
+          >
             <img
               src={`${img.replace(/^public\//, "/")}`}
               alt={`${car.brand} ${car.model}`}
-              className="w-full h-full object-cover"
+              className="w-[90%] sm:w-full h-full object-contain sm:object-cover"
             />
           </SwiperSlide>
         ))}
