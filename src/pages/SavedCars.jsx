@@ -62,10 +62,10 @@ function SavedCars() {
         {cars.map((car) => (
           <div
             key={car.id}
-            className=" rounded-xl overflow-hidden bg-white border shadow-sm hover:shadow-lg transition-all duration-300 group"
+            className="flex flex-col rounded-xl overflow-hidden bg-white border shadow-sm hover:shadow-lg transition-all duration-300 group"
           >
             {/* Image */}
-            <div className="relative h-50 overflow-hidden">
+            <div className="relative h-56 md:h-60 overflow-hidden">
               <img
                 src={car.images[0].replace(
                   /^public\//,
@@ -82,7 +82,7 @@ function SavedCars() {
             </div>
 
             {/* Content */}
-            <div className="p-4 space-y-3">
+            <div className="p-4 space-y-3 flex-1 flex flex-col">
               {/* Title */}
               <div className="flex justify-between items-center">
                 <h3 className="text-sm font-semibold tracking-wide">
@@ -140,7 +140,7 @@ function SavedCars() {
               {/* CTA */}
               <NavLink
                 to={`/cars/${car.id}`}
-                className="block text-center text-sm font-semibold text-white bg-primary rounded-full py-2 hover:bg-primary/90 transition"
+                className="mt-auto block text-center text-sm font-semibold text-white bg-primary rounded-full py-2 hover:bg-primary/90 transition"
               >
                 View Details
               </NavLink>
