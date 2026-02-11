@@ -99,6 +99,23 @@ function NavigationBar() {
           <motion.input
             type="text"
             placeholder="Search cars"
+            className="absolute right-full px-2 sm:px-3 py-1 mr-1 sm:mr-2 border rounded-lg origin-right text-sm sm:text-base bg-white transition-transform max-w-[80vw] w-56 focus:outline-none font-semibold"
+            style={{ width: "auto" }} // let Tailwind handle width
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={handleSearch}
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{
+              scaleX: searchOpen ? 1 : 0,
+              opacity: searchOpen ? 1 : 0,
+            }}
+            transition={{ duration: 0.3, ease: "linear" }}
+            onBlur={() => setSearchOpen(false)}
+          />
+
+          {/* <motion.input
+            type="text"
+            placeholder="Search cars"
             className="absolute right-full px-2 sm:px-3 py-1 mr-1 sm:mr-2 border rounded-lg origin-right text-sm sm:text-base bg-white transition-transform max-w-[320px] w-56 focus:outline-none font-semibold"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
@@ -110,7 +127,7 @@ function NavigationBar() {
             }}
             transition={{ duration: 0.3, ease: "linear" }}
             onBlur={() => setSearchOpen(false)}
-          />
+          /> */}
           {!searchOpen && (
             <motion.button
               onClick={() => setSearchOpen(!searchOpen)}
@@ -123,7 +140,7 @@ function NavigationBar() {
                 icon="mynaui:search"
                 width="20"
                 height="20"
-                className="font-semibold"
+                className="font-semibold h-[24px] w-[24px] sm:h-[20px] sm:w-[20px]"
               />
               <span className="hidden lg:inline-block text-xs sm:text-sm">
                 Search
@@ -134,7 +151,7 @@ function NavigationBar() {
 
         <NavLink
           to="/saved-cars"
-          className="flex space-x-0 sm:space-x-1 items-center "
+          className="hidden sm:flex space-x-0 sm:space-x-1 items-center "
         >
           <Icon
             icon="mynaui:save"
@@ -217,7 +234,7 @@ function NavigationBar() {
             <ul className="flex flex-col gap-1">
               {navItems.map((item, ind) => (
                 <motion.li
-                  key={item}
+                  key={ind}
                   onClick={() => {
                     setActiveIndex(ind);
                     setMobileOpen(false);
@@ -230,7 +247,7 @@ function NavigationBar() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {item}
+                  {item.label}
                 </motion.li>
               ))}
             </ul>

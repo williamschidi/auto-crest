@@ -43,7 +43,7 @@ function FeaturedCars({ carRef, id }) {
 
       <h2
         ref={collectionRef}
-        className="text-4xl md:text-5xl font-extrabold py-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold py-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
       >
         Explore Our Collections
       </h2>
