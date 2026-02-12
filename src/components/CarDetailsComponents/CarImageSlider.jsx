@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react";
 function CarImageSlider({ car }) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
   const [currentIndex, setCurrrentIndex] = useState(null);
 
   const images = car.images;
@@ -16,6 +17,22 @@ function CarImageSlider({ car }) {
 
   const isLastIndex = maxIndex === currentIndex;
   const isFirstIndex = currentIndex === 0;
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      prevRef.current &&
+      nextRef.current
+    ) {
+      swiperRef.current.params.navigation.prevEl =
+        prevRef.current;
+      swiperRef.current.params.navigation.nextEl =
+        nextRef.current;
+
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className="h-[260px] sm:h-[360px] md:h-[420px] w-full relative">
@@ -27,10 +44,11 @@ function CarImageSlider({ car }) {
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
-        onBeforeInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        // onBeforeInit={(swiper) => {
+        //   swiper.params.navigation.prevEl = prevRef.current;
+        //   swiper.params.navigation.nextEl = nextRef.current;
+        // }}
         onSlideChange={(swiper) =>
           setCurrrentIndex(swiper.activeIndex)
         }
